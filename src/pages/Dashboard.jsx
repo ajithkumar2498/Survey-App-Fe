@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Api from '../utils/Api';
 import toast from 'react-hot-toast';
-import { FaPlus, FaPoll, FaChartBar, FaCopy, FaExternalLinkAlt, FaEye } from 'react-icons/fa'; // Added FaEye
+import { FaPlus, FaPoll, FaChartBar, FaCopy, FaExternalLinkAlt, FaEye } from 'react-icons/fa'; 
 
 export default function Dashboard() {
   const [surveys, setSurveys] = useState([]);
