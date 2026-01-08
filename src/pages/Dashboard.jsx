@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Api from '../utils/Api';
-import toast from 'react-hot-toast'; 
-import { FaPlus, FaPoll, FaChartBar, FaCopy, FaExternalLinkAlt } from 'react-icons/fa';
+import toast from 'react-hot-toast';
+import { FaPlus, FaPoll, FaChartBar, FaCopy, FaExternalLinkAlt, FaEye } from 'react-icons/fa'; // Added FaEye
 
 export default function Dashboard() {
   const [surveys, setSurveys] = useState([]);
@@ -18,7 +18,6 @@ export default function Dashboard() {
           headers: { Authorization: `Bearer ${token}` }
         });
         
-        // Handle data structure safely
         const data = res.data.surveys || res.data || [];
         setSurveys(Array.isArray(data) ? data : []);
 
@@ -29,14 +28,10 @@ export default function Dashboard() {
     fetchSurveys();
   }, [navigate]);
 
-  // --- NEW: Function to Copy Link ---
   const handleCopyLink = (surveyId) => {
     const link = `${window.location.origin}/survey/${surveyId}`;
-    
     navigator.clipboard.writeText(link).then(() => {
-        toast.success("Link copied! Ready to share.");
-    }).catch(() => {
-        toast.error("Failed to copy link");
+        toast.success("Link copied to clipboard!");
     });
   };
 
@@ -62,6 +57,7 @@ export default function Dashboard() {
            surveys.map(s => (
               <div key={s._id} className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all flex flex-col overflow-hidden">
                 
+                {/* Card Body */}
                 <div className="p-6 flex-grow">
                     <div className="flex justify-between items-start mb-4">
                         <div className="bg-indigo-50 text-indigo-600 p-2 rounded-lg">
@@ -79,23 +75,35 @@ export default function Dashboard() {
                     </p>
                 </div>
 
-                {/* --- ACTIONS FOOTER --- */}
-                <div className="bg-gray-50 border-t border-gray-100 p-4 grid grid-cols-2 gap-3">
+                {/* --- ACTIONS FOOTER (3 Buttons) --- */}
+                <div className="bg-gray-50 border-t border-gray-100 p-3 grid grid-cols-3 gap-2">
+                   
                    {/* 1. View Analytics */}
                    <Link 
                         to={`/analytics/${s._id}`} 
-                        className="flex items-center justify-center gap-2 text-sm font-semibold text-gray-700 bg-white border border-gray-300 py-2 rounded-lg hover:bg-gray-50 transition"
+                        className="flex flex-col items-center justify-center gap-1 text-xs font-semibold text-gray-600 hover:text-indigo-600 hover:bg-white py-2 rounded-lg transition"
                    >
-                        <FaChartBar className="text-indigo-500" /> Results
+                        <FaChartBar size={16} /> Results
                    </Link>
 
-                   {/* 2. Copy Link Button */}
+                   {/* 2. View Survey (Opens in New Tab) */}
+                   <a 
+                        href={`/survey/${s._id}`} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex flex-col items-center justify-center gap-1 text-xs font-semibold text-gray-600 hover:text-indigo-600 hover:bg-white py-2 rounded-lg transition"
+                   >
+                        <FaEye size={16} /> View
+                   </a>
+
+                   {/* 3. Copy Link */}
                    <button 
                         onClick={() => handleCopyLink(s._id)} 
-                        className="flex items-center justify-center gap-2 text-sm font-semibold text-white bg-indigo-600 py-2 rounded-lg hover:bg-indigo-700 transition shadow-sm active:transform active:scale-95"
+                        className="flex flex-col items-center justify-center gap-1 text-xs font-semibold text-gray-600 hover:text-indigo-600 hover:bg-white py-2 rounded-lg transition"
                    >
-                        <FaCopy /> Copy Link
+                        <FaCopy size={16} /> Copy
                    </button>
+
                 </div>
               </div>
            ))
