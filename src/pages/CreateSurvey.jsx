@@ -61,7 +61,7 @@ export default function CreateSurvey() {
     setLoading(true);
     try {
         const token = localStorage.getItem('token');
-        await Api.post('/survey/create', { title, questions }, {
+        await Api.post('/survey/addsurvey', { title, questions }, {
             headers: { Authorization: `Bearer ${token}` }
         });
         toast.success("Survey Created!");
