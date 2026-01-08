@@ -6,7 +6,7 @@ import 'chart.js/auto';
 import Api from '../utils/Api';
 import { FaArrowLeft, FaDatabase, FaChartPie, FaDownload } from 'react-icons/fa';
 
-const socket = io('https://survey-app-be.onrender.com/');
+const socket = io(import.meta.env.VITE_SOCKET_URL);
 
 export default function Analytics() {
   const { id } = useParams();
