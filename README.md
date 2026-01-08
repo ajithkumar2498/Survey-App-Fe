@@ -1,16 +1,50 @@
-# React + Vite
+# 📊 SurveyApp - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The frontend client for **SurveyApp**, a real-time survey and analytics platform. Built with **React**, **Vite**, and **Tailwind CSS**, it features dynamic form creation, real-time data visualization via WebSockets, and a clean, responsive dashboard.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
+**View the deployed app:** [https://ak-surveyapp.netlify.app](https://ak-surveyapp.netlify.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **🔐 Authentication:** Secure Login and Registration pages with JWT handling.
+* **📝 Dynamic Form Builder:** Intuitive interface to create surveys with multiple question types (Text, Radio, etc.).
+* **📈 Real-time Analytics:** Interactive charts (using `react-chartjs-2`) that update instantly via `Socket.io` when a new response is submitted.
+* **📱 Responsive Design:** Fully responsive UI built with Tailwind CSS.
+* **🔗 Public Sharing:** Generate shareable links for surveys that anyone can access without logging in.
+* **📋 Dashboard:** Manage surveys, copy links, and view submission counts at a glance.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+
+* **Core:** React (Vite)
+* **Styling:** Tailwind CSS
+* **Routing:** React Router DOM
+* **State/API:** Axios, Context API
+* **Real-time:** Socket.io-client
+* **Visualization:** Chart.js, React-Chartjs-2
+* **UI Components:** React Hot Toast (Notifications), React Icons
+
+---
+
+## ⚙️ Setup & Installation
+
+Follow these steps to run the project locally.
+
+### 1. Prerequisites
+* Node.js (v14 or higher)
+* The Backend API running locally or remotely.
+
+### 2. Clone & Install
+```bash
+# Clone the repository
+git clone [https://github.com/yourusername/survey-app-frontend.git](https://github.com/yourusername/survey-app-frontend.git)
+
+# Enter the directory
+cd survey-app-frontend
+
+# Install dependencies
+npm install
